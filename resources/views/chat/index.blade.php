@@ -14,4 +14,5 @@
         </div>
     </div>
 </div>
+<chat-room></chat-room>
 @endsection
