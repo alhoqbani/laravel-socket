@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-8 col-md-offset-2 chat-window">
                 <div class="panel panel-default">
                     <div class="panel-heading">General Chat Room</div>
 
@@ -48,7 +48,37 @@
             }
         },
         mounted() {
-            socket.on('message', (message) => this.messages.push(message.data))
+            socket.on('message', (message) => {
+                this.messages.push(message.data);
+            })
         }
     }
 </script>
+
+<style lang="scss">
+    .chat-window {
+        .panel {
+            margin-bottom: 0;
+            height: 70vh;
+            max-height: 100vh;
+            position: relative;
+        }
+
+        .panel-body {
+            overflow-y: auto;
+            position: absolute;
+            top: 30px;
+            bottom: 30px;
+            left: 0;
+            right: 0;
+        }
+
+        .panel-footer {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+</style>
